@@ -75,6 +75,7 @@ const locations = [ //const(A CONSTANT) red text(VARIABLE) [](ARRAY FOR MULTIPLE
         "button functions": [pickTwo, pickEight, goTown],
         text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
     }
+    
 ];
 
 const weapons = [
@@ -291,25 +292,26 @@ function pickEight() {
     pick(8);
 }
 
+
 function pick(guess) { //()=PARAMETER
-    const numbers = []; 
+    const numbers = [];
     while (numbers.length < 10) { //while loop accepts a condition, and will run the code in the block until the condition is no longer true.
-        Math.floor(Math.random() * 11); //push a random number between 0 and 10 to the end of the numbers array
+      numbers.push(Math.floor(Math.random() * 11)); //push a random number between 0 and 10 to the end of the numbers array
     }
-    text.innerText =  "You picked" + guess + "Here are the random numbers:\n"; // \n(causes the next part you add to text.innerText to appear on a new line)
-    for (let i = 0; i < 10; x++) {  //for(a,b,c)= a(initialization) b(condition/loop runs 10 times as i =0) c(final expression/increases iteration by 1 each loop)
-        text.innerText += numbers[i] + "\n";
+    text.innerText = "You picked " + guess + ". Here are the random numbers:\n"; // \n(causes the next part you add to text.innerText to appear on a new line)
+    for (let i = 0; i < 10; i++) { //for(a,b,c)= a(initialization) b(condition/loop runs 10 times as i =0) c(final expression/increases iteration by 1 each loop)
+      text.innerText += numbers[i] + "\n";
     }
     if (numbers.includes(guess)) { //.includes() determines if an array contains an element and will return either true or false
-        text.innerText += "Right! You win 20 gold!";
-        gold += 20;
-        goldText.innerText = gold;
+      text.innerText += "Right! You win 20 gold!";
+      gold += 20;
+      goldText.innerText = gold;
     } else {
-        text.innerText += "Wrong! You lose 10 health!";
-        health -= 10;
-        healthText.innerText = health;
-        if (health >= 0){
-            lose();
-        }
-    } 
-}
+      text.innerText += "Wrong! You lose 10 health!";
+      health -= 10;
+      healthText.innerText = health;
+      if (health <= 0) {
+        lose();
+      }
+    }
+  }
