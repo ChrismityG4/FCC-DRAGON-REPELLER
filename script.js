@@ -26,6 +26,12 @@ const monsterName = document.querySelector("#monsterName")
 const monsterHealthText = document.querySelector("#monsterHealth")
 
 
+//INITIALIZE BUTTONS
+button1.onclick = goStore;
+button2.onclick = goCave;
+button3.onclick = fightDragon;
+
+
 const locations = [ //const(A CONSTANT) red text(VARIABLE) [](ARRAY FOR MULTIPLE OPTIONS) 
     { //{}(INDICATES OBJECTS) 
         name: "town square", //(key: "value")(USED TO ACCESS AND MODIFY VALUE)
@@ -74,9 +80,9 @@ const locations = [ //const(A CONSTANT) red text(VARIABLE) [](ARRAY FOR MULTIPLE
         "button text": ["2", "8", "Go to town square?"],
         "button functions": [pickTwo, pickEight, goTown],
         text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
-    }
-    
+    }  
 ];
+
 
 const weapons = [
     {
@@ -116,11 +122,6 @@ const monsters = [
 ];
 
 
-//INITIALIZE BUTTONS
-button1.onclick = goStore;
-button2.onclick = goCave;
-button3.onclick = fightDragon;
-
 function update(location) { // location(PARAMETER)
     monsterStats.style.display = "none";
     button1.innerText = location["button text"][0]; //BUTTON text CHANGES TO .innerText "" [0]="button text" 1ST ARGUMENT   
@@ -145,6 +146,7 @@ function goCave() { //()=PARAMETER
     update(locations[2]);
 }
 
+//STORE FUNCTIONS
 function buyHealth() { //MATH OF BUYING HEALTH FUNCTION BELOW //()=PARAMETER
     if (gold >= 10) { //if (CONDITION)
         gold -= 10; //SHORTHAND FOR (gold = gold -10) COMPOUND ASSIGNMENT
